@@ -48,7 +48,7 @@ p {
     margin: 80px 40px;
     background-color: var(--white);
     border-radius: 10px;
-    overflow: hidden;
+
 }
 
 .card__img {
@@ -56,6 +56,12 @@ p {
     min-height: 195px;
     background-position: top;
     background-size: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.all-card-content {
+    position: relative;
 }
 
 .card-content {
@@ -70,7 +76,7 @@ p {
 .person {
     display: flex;
     align-items: center;
-    margin: 10px 30px;
+    padding: 10px 30px;
 }
 
 .person-hidden {
@@ -102,14 +108,16 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.person__forward-icon--light { 
     background-color: var(--light-blue);
 }
 
-.person__forward-icon--dark {
+.person__forward-icon.active{ 
     background-color: var(--desaturated-blue);
+    z-index: 1;
+}
+
+.person-details__forward-icon--style.active {
+    filter: brightness(6);
 }
 
 .person-details__forward-icon--style {
@@ -118,8 +126,22 @@ p {
     padding-bottom: 2px;
 }
 
-.person-details__forward-icon--dark {
-    filter: brightness(6);
+.social-bar {
+    position: absolute;
+    display: none;
+    align-items: center;
+    color:var(--white);
+    background-color: var(--dark-blue);
+    padding: 22px 30px;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.social-bar.active {
+    display: flex;
 }
 
 .social-bar__par {
@@ -129,18 +151,6 @@ p {
     font-size: 15px;
     font-weight: bold;
     font-family: 'Manrope', sans-serif;
-}
-
-.social-bar--not-visible {
-    display: none;
-}
-
-.social-bar {
-    display: flex;
-    align-items: center;
-    color:var(--white);
-    background-color: var(--dark-blue);
-    padding: 15px 30px;
 }
 
 .social-bar i {
@@ -165,11 +175,26 @@ p {
 
     .card__img {
         width: 800px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-top-right-radius: 0;
     }
-    .person {
-        /* display: none; */
+    .social-bar {
+        border-radius: 10px;
+        bottom: 70px;
+        right: -66px;
+        width: 230px;
     }
-
+    .social-bar.active::after {
+        content: "";
+        border-style: solid;
+        border-width: 9px;
+        border-color: var(--dark-blue);
+        position: absolute;
+        top: 50px;
+        left: 46%;
+        transform: rotate(45deg);
+    }
 }
 
 
